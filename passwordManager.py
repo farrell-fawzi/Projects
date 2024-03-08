@@ -1,0 +1,17 @@
+from cryptography.fernet import Fernet
+
+
+class PasswordManager:
+    
+    def __init__(self):
+        self.key = None
+        self.password_file = None
+        self.password_dick = {}
+
+    def create_key(self, path):
+        self.key = Fernet.generate_key()
+        with open(path, 'wb') as f:
+            f.write(self.key)
+
+pm = PasswordManager()
+pm.create_key("mykey.key")            
